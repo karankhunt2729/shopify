@@ -1,0 +1,110 @@
+{% comment %}
+  {% assign var = 'this is my new variable' %}
+  <h1>{{ var }}</h1>
+  <br>
+
+  {% assign num = 32 %}
+  <h1>
+    {{ var }}
+    {{ num }}
+  </h1>
+{% endcomment %}
+
+{% assign num1 = 16 %}
+{% assign num2 = 16 %}
+<div class="hello"></div>
+<h1>Addition:{{ num1 | plus: num2 }}</h1>
+<h1>Substraction:{{ num1 | minus: num2 }}</h1>
+<h1>Multiplication:{{ num1 | times: num2 }}</h1>
+<h1>Division:{{ num1 | divided_by: num2 }}</h1>
+
+{%- if num1 == num2 -%}
+  <h1>{{ num1 }} and {{ num2 }} are equal.</h1>
+{% else -%}
+  <h1>{{ num1 }} and {{ num2 }} are not equal</h1>
+{%- endif %}
+
+{% assign variable = 'car1' %}
+{% case variable %}
+  {% when 'car' %}
+    <h1>this is Mercedise</h1>
+  {% else %}
+    <h1>wrong input</h1>
+{% endcase %}
+
+{% assign number = 10 %}
+
+{% increment number %}
+{% increment number %}
+<br>
+{% decrement number %}
+{% decrement number %}
+
+<!-- shopify regarding if else -->
+{% assign varcheck = false %}
+{% if varcheck != true %}
+  <p>this statment is valid</p>
+{% else %}
+  <p>this is statment is invalid</p>
+{% endif %}
+
+<!-- second method of shopify regarding if - else -->
+{% if page_title == 'test' %}
+  <p>this is title is wright</p>
+{% else %}
+  <p>this title is wrong</p>
+{% endif %}
+
+<!-- unless condtion -->
+{% assign num = 2 %}
+{% unless num %}
+  <p>this is wrong</p>
+{% else %}
+  <p>this is wright</p>
+{% endunless %}
+<br>
+<!-- -------------- for loop ------------------- -->
+<p>for loop</p>
+{% for numb in (1..10) -%}
+  {{ numb -}}
+{%- endfor %}
+<br>
+<p>break</p>
+{% for i in (1..10) %}
+  {% if i == 5 %}
+    {% break %}
+  {% else %}
+    {{ i }}
+  {% endif %}
+{% endfor %}
+<br>
+
+<p>continue</p>
+{%- for k in (1..10) %}
+  {%- if k == 5 %}
+    {%- continue %}
+  {%- else %}
+    {{ k }}
+  {%- endif %}
+{%- endfor %}
+<br>
+{% for product in collections.all.products %}
+  {{ product.title -}}
+  - {{ product.price }}
+  <br>
+{% endfor %}
+
+<!-- array -->
+{% assign arr = 'karan, Darshan, smit' | split: ',' %}
+{% for items in arr %}
+  <li>{{ items }}</li>
+{% endfor %}
+<br>
+<!-- reverse array -->
+<!--
+  {% assign name = 'karan , Darshan , Smit' | split: ',' %}
+  {{ name | reverse | join: ',' }}
+-->
+
+{% assign name = 'Karan, Darshan, Smit' | split: ',' %}
+{{ name | sort | join: ',' }}
