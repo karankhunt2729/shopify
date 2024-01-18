@@ -106,10 +106,6 @@
   {{ name | reverse | join: ',' }}
 -->
 
-{% assign name = 'Karan, Darshan, Smit' | split: ',' %}
+{% assign name = 'Karan, Darshan, Smitla' | split: ',' %}
 {{ name | sort | join: ',' }}
 
-
-{% for tag in collection.all_tags %}
-  {{- tag | highlight_active_tag | link_to_tag: tag }}
-{% endfor %}
